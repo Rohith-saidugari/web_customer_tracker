@@ -17,7 +17,7 @@
         <h2> CRM - Customer Relationship Manager</h2>
     </div>
 </div>
-
+${pageContext.request.contextPath}
 <div id="container">
     <div id="content">
         <table>
