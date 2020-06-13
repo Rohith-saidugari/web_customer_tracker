@@ -35,11 +35,11 @@
     </bean>
 
 
-    <!--  Setup Hibernate session factory -->
+    <!--  Setup Hibernate session factory  uses datasource Dependency injection-->
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource" />
-        <property name="packagesToScan" value="com.webcustomertracker.entity" />
+        <property name="packagesToScan" value="com.webcustomertracker.model"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
