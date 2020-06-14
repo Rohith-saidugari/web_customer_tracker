@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: rohit
@@ -7,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -28,7 +30,7 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Manage <b>Employees</b></h2>
+                    <h2>Manage <b>Customers</b></h2>
                 </div>
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
@@ -93,11 +95,11 @@
         </div>
     </div>
 </div>
-<!-- Edit Modal HTML -->
+<!-- Add Modal HTML -->
 <div id="addEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form:form action="saveCustomer" modelAttribute="newCustomer" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Add Customer</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -105,22 +107,24 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" required>
+                        <form:input path="firstName" cssClass="form-control" required="required"/>
                     </div>
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="email" class="form-control" required>
+                        <form:input path="lastName" cssClass="form-control" required="required"/>
+
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <textarea class="form-control" required></textarea>
+                        <form:input path="emailId" cssClass="form-control" required="required"/>
+
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success" value="Add">
                 </div>
-            </form>
+            </form:form>
         </div>
     </div>
 </div>
