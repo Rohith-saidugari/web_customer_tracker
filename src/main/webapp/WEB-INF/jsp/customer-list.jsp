@@ -80,7 +80,7 @@
             </tbody>
         </table>
         <div class="clearfix">
-            <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+            <div class="hint-text">Showing <b>5</b> out of <b>${customers.size()}</b> entries</div>
             <ul class="pagination">
                 <li class="page-item disabled"><a href="#">Previous</a></li>
                 <li class="page-item"><a href="#" class="page-link">1</a></li>
@@ -140,7 +140,7 @@
                     </div>
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="email" class="form-control" required>
+                        <input type="text" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
