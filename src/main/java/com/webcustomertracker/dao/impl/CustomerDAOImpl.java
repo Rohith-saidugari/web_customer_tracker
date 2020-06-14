@@ -17,10 +17,9 @@ import java.util.List;
 public class CustomerDAOImpl implements CustomerDAO {
 
     @Autowired
-    SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Override
-    @Transactional
     public List<Customer> getCustomers() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("from Customer");
