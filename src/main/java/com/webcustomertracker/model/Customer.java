@@ -1,9 +1,10 @@
 package com.webcustomertracker.model;
 
 
-import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "customer")
@@ -15,12 +16,15 @@ public class Customer {
     private int id;
 
 
+    @NotBlank(message = "Please provide FirstName")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank(message = "Please provide LastName")
     @Column(name = "last_name")
     private String lastName;
 
+    @Email(regexp = ".+@.+\\..+", message = "Please provide an email address")
     @Column(name = "email")
     private String emailId;
 
