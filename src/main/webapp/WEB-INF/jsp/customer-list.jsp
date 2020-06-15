@@ -25,6 +25,21 @@
 
 </head>
 <body>
+
+<c:forEach var="errorMessage" items="${FieldErrors}">
+    <div class="alert alert-danger alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Field Error!!!! ${errorMessage}</strong>
+    </div>
+</c:forEach>
+<c:if test="${not empty addedCustomer}">
+    <div class="alert alert-success alert-dismissible fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>New Customer ${addedCustomer.firstName} ${addedCustomer.lastName} Added</strong>
+    </div>
+</c:if>
+
+
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -106,24 +121,33 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>First Name</label>
-                        <form:input path="firstName" cssClass="form-control" required="required"/>
+                        <label>First Name (*)</label>
+                        <form:input path="firstName" cssClass="form-control"/>
                     </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <form:input path="lastName" cssClass="form-control" required="required"/>
 
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <form:input path="emailId" cssClass="form-control" required="required"/>
 
+                    <div class="form-group">
+                        <label>Last Name (*)</label>
+                        <form:input path="lastName" cssClass="form-control"/>
                     </div>
+
+                    <form:errors path="lastName"/>
+                    <div class="form-group">
+                        <label>Email (*)</label>
+                        <form:input path="emailId" cssClass="form-control"/>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Fields marked as * are mandatory</label>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-success" value="Add">
                 </div>
+
             </form:form>
         </div>
     </div>
@@ -182,5 +206,6 @@
 </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/customer-list.js"/>
+
 </body>
 </html>
