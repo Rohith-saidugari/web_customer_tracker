@@ -83,12 +83,12 @@
                     <td>${tempcustomer.lastName}</td>
                     <td>${tempcustomer.emailId}</td>
                     <td>
-                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons"
-                                                                                         data-toggle="tooltip"
-                                                                                         title="Edit">&#xE254;</i></a>
-                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons"
-                                                                                             data-toggle="tooltip"
-                                                                                             title="Delete">&#xE872;</i></a>
+                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"
+                           data-customer='{"firstName":"${tempcustomer.firstName}","lastName" :"${tempcustomer.lastName}","emailId" :"${tempcustomer.emailId}" }'
+                           data-id="${tempcustomer.id}">
+                            <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" data-id="${tempcustomer.id}">
+                            <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 
@@ -156,7 +156,7 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form:form id="userForm" action="" method="POST" modelAttribute="updateCustomer">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -164,22 +164,22 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>First Name</label>
-                        <input type="text" class="form-control" required>
+                        <form:input path="firstName" cssClass="form-control" name="firstName"/>
                     </div>
                     <div class="form-group">
                         <label>Last Name</label>
-                        <input type="text" class="form-control" required>
+                        <form:input path="lastName" cssClass="form-control" name="firstName"/>
                     </div>
                     <div class="form-group">
                         <label>Email</label>
-                        <textarea class="form-control" required></textarea>
+                        <form:input path="emailId" cssClass="form-control" name="emailId"/>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-info" value="Save">
                 </div>
-            </form>
+            </form:form>
         </div>
     </div>
 </div>
@@ -205,7 +205,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/customer-list.js"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/customer-list.js"></script>
 
 </body>
 </html>

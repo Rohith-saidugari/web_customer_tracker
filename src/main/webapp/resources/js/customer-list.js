@@ -15,6 +15,15 @@ $(document).ready(function () {
             });
         }
     });
+
+    $('#editEmployeeModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget);
+        var data = button.data('customer');
+        $(event.currentTarget).find('input[name="firstName"]').val(data['firstName']);
+        $(event.currentTarget).find('input[name="lastName"]').val(data['lastName']);
+        $(event.currentTarget).find('input[name="emailId"]').val(data['emailId']);
+        $('#userForm').attr("action", window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/customer/update/" + button.data('id'));
+    });
     checkbox.click(function () {
         if (!this.checked) {
             $("#selectAll").prop("checked", false);
