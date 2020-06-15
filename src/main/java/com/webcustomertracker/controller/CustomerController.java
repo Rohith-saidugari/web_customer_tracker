@@ -8,12 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.LinkedList;
@@ -32,6 +27,7 @@ public class CustomerController {
         Customer newCustomer = new Customer();
         // For adding employee setting up model attribute
         model.addAttribute("newCustomer", newCustomer);
+        model.addAttribute("updateCustomer", newCustomer);
         model.addAttribute("customers", customerService.getCustomers());
         return "customer-list";
     }
@@ -47,6 +43,24 @@ public class CustomerController {
             return "redirect:/customer/list";
         }
         customerService.saveCustomer(customer);
+        return "redirect:/customer/list";
+    }
+
+    //TODO Exception Handling
+    //If customer Id is wrong??
+    @PostMapping("/update/{id}")
+    public String updateCustomer(@PathVariable("id") int id, @Valid @ModelAttribute("updateCustomer") Customer customer,
+                                 BindingResult result, Model Model) {
+        if (result.hasErrors()) {
+            // Add coundnot update model
+            return "redirect:/customer/list";
+        }
+        Customer customerTobeUpdated = customerService.getCustoemr(id);
+        customerTobeUpdated.setFirstName(customer.getFirstName());
+        customerTobeUpdated.setLastName(customer.getLastName());
+        customerTobeUpdated.setEmailId(customer.getEmailId());
+        customerService.updateCustomer(customerTobeUpdated);
+        //Add dismissable alert message to model and pass it on
         return "redirect:/customer/list";
     }
 

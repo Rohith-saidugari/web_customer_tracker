@@ -10,4 +10,8 @@ public interface CustomerService {
     Customer saveCustomer(Customer customer);
 
     Customer deleteCustomer(Customer customer);
+
+    Customer getCustoemr(int id);
+
+    Customer updateCustomer(Customer customer);
 }
