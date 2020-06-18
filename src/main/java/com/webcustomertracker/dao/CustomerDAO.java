@@ -10,7 +10,7 @@ public interface CustomerDAO {
 
     Customer saveCustomer(Customer customer);
 
-    Customer deleteCustomer(Customer customer);
+    Customer deleteCustomer(int id);
 
     Customer getCustomer(int id);
 

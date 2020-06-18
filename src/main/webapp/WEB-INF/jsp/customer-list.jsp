@@ -156,7 +156,7 @@
 <div id="editEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form:form id="userForm" action="" method="POST" modelAttribute="updateCustomer">
+            <form:form id="userForm" action="" method="post" modelAttribute="updateCustomer">
                 <div class="modal-header">
                     <h4 class="modal-title">Edit Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -187,9 +187,9 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form>
+            <form:form id="userDeleteForm" action="" method="delete">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete Customers</h4>
+                    <h4 class="modal-title">Delete Customer(s)</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -200,7 +200,7 @@
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-danger" value="Delete">
                 </div>
-            </form>
+            </form:form>
         </div>
     </div>
 </div>
