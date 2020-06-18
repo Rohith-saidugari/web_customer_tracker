@@ -26,6 +26,16 @@
 </head>
 <body>
 
+<div class="row">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">CRM</a>
+        <form:form action="${pageContext.request.contextPath}/logout" method="post">
+            <input type="submit" value="Logout" class="btn btn-outline-success my-2 my-sm-0 float-right">
+        </form:form>
+    </nav>
+</div>
+
+
 <c:forEach var="errorMessage" items="${FieldErrors}">
     <div class="alert alert-danger alert-dismissible fade in">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -187,7 +197,7 @@
 <div id="deleteEmployeeModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form:form id="userDeleteForm" action="" method="delete">
+            <form:form id="userDeleteForm" action="" method="DELETE">
                 <div class="modal-header">
                     <h4 class="modal-title">Delete Customer(s)</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
