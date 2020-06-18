@@ -1,7 +1,6 @@
 package com.webcustomertracker.model;
 
 
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
