@@ -60,12 +60,11 @@ public class CustomerController {
         customerTobeUpdated.setLastName(customer.getLastName());
         customerTobeUpdated.setEmailId(customer.getEmailId());
         customerService.updateCustomer(customerTobeUpdated);
-        //Add dismissable alert message to model and pass it on
         return "redirect:/customer/list";
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String deleteCustomer(@PathVariable("id") int id) {
         customerService.deleteCustomer(id);
         return "redirect:/customer/list";
